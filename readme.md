@@ -4,6 +4,7 @@ A live weather app using Open-Meteo API — no API key required!
 
 ## Preview
 ![Weather Widget](weather.png)
+![Weather Widget](weather2.png)
 
 ## Features
 - Search any city worldwide
