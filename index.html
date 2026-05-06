@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Weather Widget</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="page">
+    <h1 class="heading">Weather Widget</h1>
+    <p class="subheading">Search any city to get live weather</p>
+
+    <div class="card">
+
+      <!-- search -->
+      <div class="search-box">
+        <input type="text" id="cityInput"
+          placeholder="Enter city name..."
+          onkeydown="if(event.key==='Enter') getWeather()" />
+        <button class="search-btn" onclick="getWeather()">Search</button>
+      </div>
+
+      <!-- loader -->
+      <div class="loader" id="loader" style="display:none">
+        <div class="spinner"></div>
+        <p>Fetching weather...</p>
+      </div>
+
+      <!-- error -->
+      <div class="error-box" id="errorBox" style="display:none">
+        <p id="errorMsg">City not found. Try again!</p>
+      </div>
+
+      <!-- weather display -->
+      <div class="weather" id="weatherDisplay" style="display:none">
+
+        <!-- top -->
+        <div class="weather-top">
+          <div class="weather-left">
+            <p class="city-name" id="cityName">-</p>
+            <p class="country" id="country">-</p>
+            <div class="weather-icon" id="weatherIcon">🌤</div>
+            <p class="weather-desc" id="weatherDesc">-</p>
+          </div>
+          <div class="weather-right">
+            <p class="temperature" id="temperature">-</p>
+            <p class="feels-like" id="feelsLike">Feels like -</p>
+          </div>
+        </div>
+
+        <!-- stats -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-icon">💧</span>
+            <span class="stat-val" id="humidity">-</span>
+            <span class="stat-label">Humidity</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-icon">💨</span>
+            <span class="stat-val" id="windSpeed">-</span>
+            <span class="stat-label">Wind</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-icon">🌡️</span>
+            <span class="stat-val" id="maxTemp">-</span>
+            <span class="stat-label">Max Temp</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-icon">❄️</span>
+            <span class="stat-val" id="minTemp">-</span>
+            <span class="stat-label">Min Temp</span>
+          </div>
+        </div>
+
+        <!-- forecast -->
+        <div class="forecast-section">
+          <p class="forecast-title">7-Day Forecast</p>
+          <div class="forecast-list" id="forecastList"></div>
+        </div>
+
+      </div>
+
+      <!-- default state -->
+      <div class="default-state" id="defaultState">
+        <div class="default-icon">🌍</div>
+        <p>Search a city to see weather</p>
+        <div class="quick-cities">
+          <button onclick="quickSearch('Mumbai')">Mumbai</button>
+          <button onclick="quickSearch('Delhi')">Delhi</button>
+          <button onclick="quickSearch('Kolkata')">Kolkata</button>
+          <button onclick="quickSearch('London')">London</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
